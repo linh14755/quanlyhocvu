@@ -42,6 +42,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('giaovien.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Giáo viên
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a href="{{route('phuhuynh.index')}}" class="nav-link">

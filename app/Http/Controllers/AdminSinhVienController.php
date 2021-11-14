@@ -114,10 +114,11 @@ class AdminSinhVienController extends Controller
             Excel::import(new SinhVienImport, $request->file);
             DB::commit();
 
-            return redirect()->back()->withStatus('Import successfully');
+            return redirect()->back()->with('message', 'Import Successfully !!');
         } catch (\Exception $exception) {
-            Log::error('Message' . $exception->getMessage() . ' ------Line ' . $exception->getLine());
+            Log::error('Message: ' . $exception->getMessage() . ' ------Line ' . $exception->getLine());
             DB::rollBack();
+            return redirect()->back()->with('message', 'Message: ' . $exception->getMessage());
         }
     }
 }

@@ -33,11 +33,11 @@
 
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Danh sách phụ huynh</h3>
+                            <div class="card-header row">
+                                <h3 class="card-title col-4">Danh sách phụ huynh</h3>
 
-                                <div class="card-tools">
-                                    <div class="input-group input-group-sm" style="width: 500px;">
+                                <div class="card-tools col-8">
+                                    <div class="input-group input-group-sm">
                                         <input type="text" name="table_search" class="form-control float-right"
                                                placeholder="Search">
 

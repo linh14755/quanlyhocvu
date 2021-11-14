@@ -40,6 +40,12 @@
                                 </div>
                             </form>
                         </div>
+                        @if (\Session::has('message'))
+                            <div class="alert alert-info alert-block" role="alert">
+                               {!! \Session::get('message') !!}</ul>
+                            </div>
+
+                    @endif
                         <!-- /.card -->
                     </div>
 

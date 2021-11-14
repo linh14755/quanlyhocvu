@@ -95,6 +95,36 @@ Route::prefix('admin')->group(function () {
         ]);
     });
 
+    //Giao vien
+    Route::prefix('giaovien')->group(function () {
+        Route::get('/', [
+            'as' => 'giaovien.index',
+            'uses' => 'AdminGiaoVienController@index',
+        ]);
+        Route::get('/create', [
+            'as' => 'giaovien.create',
+            'uses' => 'AdminGiaoVienController@create',
+        ]);
+        Route::post('/store', [
+            'as' => 'giaovien.store',
+            'uses' => 'AdminGiaoVienController@store',
+        ]);
+        Route::get('/edit/{id}', [
+            'as' => 'giaovien.edit',
+            'uses' => 'AdminGiaoVienController@edit',
+        ]);
+        Route::post('/update/{id}', [
+            'as' => 'giaovien.update',
+            'uses' => 'AdminGiaoVienController@update',
+        ]);
+
+        Route::get('/delete/{id}', [
+            'as' => 'giaovien.delete',
+            'uses' => 'AdminGiaoVienController@delete',
+        ]);
+
+    });
+
     //Phu huynh
     Route::prefix('phuhuynh')->group(function () {
         Route::get('/', [
