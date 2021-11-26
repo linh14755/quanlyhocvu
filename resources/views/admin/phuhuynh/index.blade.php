@@ -21,8 +21,8 @@
             <div class="container-fluid">
                 <dvi class="row mb-3 pt-3">
                     <div class="col-4">
-                        <a type="button" class="btn btn-success"><i class="fa fa-table" aria-hidden="true"></i>
-                            Import</a>
+{{--                        <a type="button" class="btn btn-success"><i class="fa fa-table" aria-hidden="true"></i>--}}
+{{--                            Import</a>--}}
                         <a href="{{route('phuhuynh.create')}}" type="button" class="btn btn-success"><i
                                 class="fa fa-plus-square" aria-hidden="true"></i>
                             Add</a>

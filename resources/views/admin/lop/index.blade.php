@@ -31,10 +31,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header row">
-                                <h3 class="card-title col-4">Danh sách lớp</h3>
-
+                                <h3 class="card-title col-4">{{(isset($tenkhoa))? 'Các lớp thuộc: '. $tenkhoa.' - '.count($lops).' lớp' :'Danh sách lớp'}}</h3>
                                 <div class="card-tools col-8">
-                                    <div class="input-group input-group-sm" >
+                                    <div class="input-group input-group-sm">
                                         <input type="text" name="table_search" class="form-control float-right"
                                                placeholder="Search">
 
@@ -51,11 +50,12 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
-                                        <th>Mã Lớp</th>
-                                        <th>Mã Khoa</th>
+                                        <th>Lớp</th>
+                                        <th>Thuộc Khoa</th>
                                         <th>GVCN</th>
                                         <th>Sĩ số</th>
                                         <th>Niên khóa</th>
+                                        <th>Danh sách sinh viên</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -63,10 +63,20 @@
                                     @foreach($lops as $lop)
                                         <tr>
                                             <td>{{$lop->malop}}</td>
-                                            <td>{{$lop->makhoa}}</td>
-                                            <td>{{optional($lop->giaovien)->tengv}}</td>
+                                            <td>{{optional($lop->khoa)->tenkhoa}}</td>
+                                            <td>
+                                                @if($lop->magvcn !=0)
+                                                    <a href="{{route('giaovien.edit',['id'=>$lop->magvcn])}}">{{optional($lop->giaovien)->tengv}}
+                                                        <i
+                                                            class="fas fa-edit text-warning mr-2"
+                                                            aria-hidden="true"></i></a>
+                                                @endif
+                                            </td>
                                             <td>{{$lop->siso}}</td>
                                             <td>{{$lop->nienkhoa}}</td>
+                                            <td><a class="text-dark" href="{{route('sinhvien.theolop',['malop'=>$lop->malop])}}">Danh sách
+                                                    sinh viên <i
+                                                        class="fa fa-link text-primary" aria-hidden="true"></i></a></td>
                                             <td>
                                                 <a href="{{route('lop.edit',['id'=>$lop->malop])}}"><i
                                                         class="fas fa-edit text-warning mr-2"

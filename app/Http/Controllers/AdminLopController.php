@@ -89,4 +89,11 @@ class AdminLopController extends Controller
     {
         return $this->deleteModelTrait('malop', $id, $this->lop);
     }
+
+    public function theokhoa($makhoa)
+    {
+        $lops = $this->lop->where('makhoa', $makhoa)->paginate(35);
+        $tenkhoa = optional($lops[0]->khoa)->tenkhoa;
+        return view('admin.lop.index', compact('lops','tenkhoa'));
+    }
 }

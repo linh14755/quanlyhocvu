@@ -70,7 +70,7 @@
                                             <td>{{$giaovien->email}}</td>
                                             <td>
                                                 @if(!empty($giaovien->facebook))
-                                                    <a  href="{{$giaovien->facebook}}"><i class="fa fa-link text-danger" aria-hidden="true"></i></a>
+                                                    <a  href="{{$giaovien->facebook}}"><i class="fa fa-link text-primary" aria-hidden="true"></i></a>
                                                 @else
                                                     Chưa cập nhật...
                                                 @endif

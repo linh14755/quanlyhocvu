@@ -14,8 +14,8 @@ class AddQuanheph1Quanheph2ToUsersSinhvien extends Migration
     public function up()
     {
         Schema::table('sinh_viens', function (Blueprint $table) {
-            $table->string('quanheph1');
-            $table->string('quanheph2');
+            $table->string('quanheph1')->nullable();
+            $table->string('quanheph2')->nullable();
         });
     }
 

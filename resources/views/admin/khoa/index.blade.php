@@ -52,21 +52,26 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
-                                        <th>Mã Khoa</th>
+                                        <th>ID</th>
                                         <th>Tên Khoa</th>
+                                        <th>Lớp</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($khoas as $khoa)
                                         <tr>
-                                            <td>{{$khoa->makhoa}}</td>
+                                            <td>{{$khoa->id}}</td>
                                             <td>{{$khoa->tenkhoa}}</td>
+                                            <td> <a class="text-dark" href="{{route('lop.theokhoa',['makhoa'=>$khoa->id])}}">Danh sách lớp <i
+                                                        class="fa fa-link text-primary" aria-hidden="true"></i></a>
+                                            </td>
                                             <td>
-                                                <a href="{{route('khoa.edit',['id'=>$khoa->makhoa])}}"><i
+                                                <a href="{{route('khoa.edit',['id'=>$khoa->id])}}"><i
                                                         class="fas fa-edit text-warning mr-2"
                                                         aria-hidden="true"></i></a>
-                                                <a class="action_delete" href="" data-url="{{route('khoa.delete',['id'=>$khoa->makhoa])}}" ><i
+                                                <a class="action_delete" href=""
+                                                   data-url="{{route('khoa.delete',['id'=>$khoa->id])}}"><i
                                                         class="fa fa-trash text-danger"
                                                         aria-hidden="true"></i></a>
                                             </td>

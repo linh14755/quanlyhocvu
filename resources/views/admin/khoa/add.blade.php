@@ -29,10 +29,6 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Mã Khoa</label>
-                                        <input name="makhoa" type="text" class="form-control" placeholder="Nhập mã khoa">
-                                    </div>
-                                    <div class="form-group">
                                         <label>Tên khoa</label>
                                         <input name="tenkhoa" type="text" class="form-control" placeholder="Nhập tên khoa">
                                     </div>

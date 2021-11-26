@@ -12,6 +12,7 @@ use App\Traits;
 class AdminKhoaController extends Controller
 {
     use DeleteModelTrait;
+
     private $khoa;
 
     public function __construct(Khoa $khoa)
@@ -32,10 +33,10 @@ class AdminKhoaController extends Controller
 
     public function store(Request $request)
     {
+
         try {
             DB::beginTransaction();
             $this->khoa->create([
-                'makhoa' => $request->makhoa,
                 'tenkhoa' => $request->tenkhoa,
             ]);
             DB::commit();
@@ -49,7 +50,9 @@ class AdminKhoaController extends Controller
 
     public function edit($id)
     {
-        $khoa = $this->khoa->where('makhoa', $id)->first();
+
+        $khoa = $this->khoa->find($id);
+
         return view('admin.khoa.edit', compact('khoa'));
     }
 
@@ -58,8 +61,7 @@ class AdminKhoaController extends Controller
         if ($id != '') {
             try {
                 DB::beginTransaction();
-                $this->khoa->where('makhoa', $id)->update([
-//                    'makhoa' => $request->makhoa,
+                $this->khoa->find($id)->update([
                     'tenkhoa' => $request->tenkhoa,
                 ]);
                 DB::commit();
@@ -73,6 +75,6 @@ class AdminKhoaController extends Controller
 
     public function delete($id)
     {
-        return $this->deleteModelTrait('makhoa',$id, $this->khoa);
+        return $this->deleteModelTrait('id', $id, $this->khoa);
     }
 }

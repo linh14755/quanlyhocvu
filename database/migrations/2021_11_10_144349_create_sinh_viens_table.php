@@ -17,9 +17,8 @@ class CreateSinhViensTable extends Migration
             $table->string('masv')->primary();
             $table->string('tensv');
             $table->date('ngaysinh')->nullable();
-            $table->string('malop');
-            $table->string('maph1');
-            $table->string('maph2');
+            $table->string('maph1')->nullable();
+            $table->string('maph2')->nullable();
 
             $table->timestamps();
         });

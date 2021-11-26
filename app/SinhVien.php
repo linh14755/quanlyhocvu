@@ -20,6 +20,6 @@ class SinhVien extends Model
 
     public function lop()
     {
-        return $this->belongsTo(Lop::class, 'malop','malop');
+        return $this->belongsToMany(Lop::class, 'sinhvien_lops', 'masv', 'malop','masv','malop')->withTimestamps();
     }
 }

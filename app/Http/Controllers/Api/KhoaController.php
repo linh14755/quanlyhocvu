@@ -33,8 +33,13 @@ class KhoaController extends Controller
 //        }
         $khoa = Khoa::all();
         return response()->json([
-            'code'=> 200,
-            'data'=> $khoa
+            'code' => 200,
+            'data' => $khoa
         ], 200);
+    }
+
+    public function show($id)
+    {
+        return Khoa::where('makhoa',$id)->first();
     }
 }

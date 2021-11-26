@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/admin', 'AdminController@loginAdmin');
 Route::post('/admin', 'AdminController@postloginAdmin');
 
@@ -29,14 +30,7 @@ Route::prefix('admin')->group(function () {
         'uses' => 'AdminController@logout'
     ]);
 
-    //DangKyHocPhan
-    Route::prefix('dangkyhocphan')->group(function () {
-        Route::get('/', [
-            'as' => 'dangkyhocphan.index',
-            'uses' => 'AdminDangKyHocPhanController@index',
-        ]);
 
-    });
     //Khoa
     Route::prefix('khoa')->group(function () {
         Route::get('/', [
@@ -92,6 +86,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [
             'as' => 'lop.delete',
             'uses' => 'AdminLopController@delete',
+        ]);
+        Route::get('/theokhoa/{makhoa}', [
+            'as' => 'lop.theokhoa',
+            'uses' => 'AdminLopController@theokhoa',
         ]);
     });
 
@@ -188,6 +186,10 @@ Route::prefix('admin')->group(function () {
             'as' => 'sinhvien.delete',
             'uses' => 'AdminSinhVienController@delete',
         ]);
+        Route::get('/theolop/{malop}', [
+            'as' => 'sinhvien.theolop',
+            'uses' => 'AdminSinhVienController@theolop',
+        ]);
 
         Route::get('/import-form', [
             'as' => 'sinhvien.import-form',
@@ -196,6 +198,58 @@ Route::prefix('admin')->group(function () {
         Route::post('/import', [
             'as' => 'sinhvien.import',
             'uses' => 'AdminSinhVienController@import',
+        ]);
+    });
+
+    //Lop hoc phan
+    Route::prefix('lophocphan')->group(function () {
+        Route::get('/', [
+            'as' => 'lophocphan.index',
+            'uses' => 'AdminLopHocPhanController@index',
+        ]);
+        Route::get('/create', [
+            'as' => 'lophocphan.create',
+            'uses' => 'AdminLopHocPhanController@create',
+        ]);
+        Route::get('/theolhp/{malhp}', [
+            'as' => 'lophocphan.theolhp',
+            'uses' => 'AdminLopHocPhanController@theolhp',
+        ]);
+    });
+
+    //Hoc phan
+    Route::prefix('hocphan')->group(function () {
+        Route::get('/', [
+            'as' => 'hocphan.index',
+            'uses' => 'AdminHocPhanController@index',
+        ]);
+        Route::get('/theohocphan/{mahp}', [
+            'as' => 'hocphan.theohocphan',
+            'uses' => 'AdminHocPhanController@theohocphan',
+        ]);
+    });
+
+    //Chi tiet lop hoc phan
+    Route::prefix('chitietlophocphan')->group(function () {
+        Route::get('/', [
+            'as' => 'chitietlophocphan.index',
+            'uses' => 'AdminChiTietLopHocPhanController@index',
+        ]);
+        Route::get('/chitiet/{masv}', [
+            'as' => 'chitietlophocphan.chitiet',
+            'uses' => 'AdminChiTietLopHocPhanController@chitiet',
+        ]);
+        Route::get('/import-form', [
+            'as' => 'chitietlophocphan.import-form',
+            'uses' => 'AdminChiTietLopHocPhanController@importForm',
+        ]);
+        Route::post('/import', [
+            'as' => 'chitietlophocphan.import',
+            'uses' => 'AdminChiTietLopHocPhanController@import',
+        ]);
+        Route::get('/theosinhvien/{masv}', [
+            'as' => 'chitietlophocphan.theosinhvien',
+            'uses' => 'AdminChiTietLopHocPhanController@theosinhvien',
         ]);
     });
 });

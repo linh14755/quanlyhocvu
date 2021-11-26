@@ -26,12 +26,12 @@
                             <!-- /.card-header -->
                             <!-- form start -->
                             <form method="POST"
-                                  action="{{route('khoa.update',['id'=>(isset($khoa) ? $khoa->makhoa :'')])}}">
+                                  action="{{route('khoa.update',['id'=>(isset($khoa) ? $khoa->id :'')])}}">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Mã khoa</label>
-                                        <input disabled value="{{(isset($khoa) ? $khoa->makhoa :'')}}" name="makhoa" type="text"
+                                        <input disabled value="{{(isset($khoa) ? $khoa->id :'')}}" name="makhoa" type="text"
                                                class="form-control" placeholder="Nhập mã khoa">
                                     </div>
                                     <div class="form-group">

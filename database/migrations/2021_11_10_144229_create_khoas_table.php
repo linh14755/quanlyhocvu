@@ -14,7 +14,7 @@ class CreateKhoasTable extends Migration
     public function up()
     {
         Schema::create('khoas', function (Blueprint $table) {
-            $table->string('makhoa')->primary();
+            $table->id();
             $table->string('tenkhoa');
             $table->timestamps();
         });

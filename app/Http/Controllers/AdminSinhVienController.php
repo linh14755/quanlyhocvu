@@ -111,7 +111,8 @@ class AdminSinhVienController extends Controller
     {
         try {
             DB::beginTransaction();
-            Excel::import(new SinhVienImport, $request->file);
+//            Excel::import(new SinhVienImport, $request->file);
+
             DB::commit();
 
             return redirect()->back()->with('message', 'Import Successfully !!');
@@ -120,5 +121,21 @@ class AdminSinhVienController extends Controller
             DB::rollBack();
             return redirect()->back()->with('message', 'Message: ' . $exception->getMessage());
         }
+    }
+
+    public function theolop($malop)
+    {
+        $lop = $this->lop->where('malop', $malop)->get();
+        $lsinhvien = array();
+        foreach ($lop[0]->sinhvien as $sv) {
+            $lsinhvien[] = $sv;
+        }
+
+        if (count($lsinhvien) != 0) {
+            $tenlop = $malop;
+            return view('admin.sinhvien.index', compact('lsinhvien', 'tenlop'));
+        }
+
+        return view('admin.sinhvien.index', compact('lsinhvien'));
     }
 }

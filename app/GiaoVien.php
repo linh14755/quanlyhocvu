@@ -10,6 +10,6 @@ class GiaoVien extends Model
 
     public function khoa()
     {
-        return $this->belongsTo(Khoa::class, 'makhoa','makhoa');
+        return $this->belongsTo(Khoa::class, 'makhoa');
     }
 }

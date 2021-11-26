@@ -50,7 +50,7 @@
                                         <select name="makhoa" class="form-control select2">
                                             <option value="0">Chọn khoa</option>
                                             @foreach($khoas as $khoa)
-                                                <option {{($lop->makhoa == $khoa->makhoa) ? 'selected':''}} value="{{$khoa->makhoa}}">{{$khoa->makhoa.' - '.$khoa->tenkhoa}}</option>
+                                                <option {{($lop->makhoa == $khoa->id) ? 'selected':''}} value="{{$khoa->id}}">{{$khoa->id.' - '.$khoa->tenkhoa}}</option>
                                             @endforeach
                                         </select>
                                     </div>

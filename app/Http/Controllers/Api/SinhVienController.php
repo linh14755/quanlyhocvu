@@ -32,8 +32,13 @@ class SinhVienController extends Controller
 //        }
         $sinhVien = SinhVien::all();
         return response()->json([
-            'code'=> 200,
-            'data'=> $sinhVien
+            'code' => 200,
+            'data' => $sinhVien
         ], 200);
+    }
+
+    public function show($id)
+    {
+        return SinhVien::where('masv', $id)->get();
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\PhuHuynh;
 use App\SessionUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PhuHuynhController extends Controller
 {
@@ -33,8 +34,25 @@ class PhuHuynhController extends Controller
 //        }
         $phuHuynh = PhuHuynh::all();
         return response()->json([
-            'code'=> 200,
-            'data'=> $phuHuynh
+            'code' => 200,
+            'data' => $phuHuynh
         ], 200);
+    }
+
+    public function login(Request $request)
+    {
+        $phuhuynh = PhuHuynh::where('sodt',$request->sodt)->first();
+
+        if (Hash::check($request->matkhau, $phuhuynh->matkhau)) {
+            return response()->json([
+                'code' => 200,
+                'data' => $phuhuynh
+            ], 200);
+        } else {
+            return response()->json([
+                'code' => 200,
+                'data' => 'tai khoan hoac mat khau sai'
+            ], 200);
+        }
     }
 }

@@ -65,7 +65,7 @@
                                             <option value="0">Chọn khoa</option>
                                             @foreach($khoas as $khoa)
                                                 <option
-                                                    value="{{$khoa->makhoa}}">{{$khoa->makhoa.' - '.$khoa->tenkhoa}}</option>
+                                                    value="{{$khoa->id}}">{{$khoa->id.' - '.$khoa->tenkhoa}}</option>
                                             @endforeach
                                         </select>
                                     </div>
