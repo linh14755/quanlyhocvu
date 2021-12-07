@@ -19,7 +19,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <dvi class="row mb-3 pt-3">
+                <div class="row mb-3 pt-3">
                     <div class="col-4">
                         <a href="{{route('chitietlophocphan.import-form')}}" type="button" class="btn btn-success"><i
                                 class="fa fa-table" aria-hidden="true"></i>
@@ -29,7 +29,7 @@
                             Add</a>
 
                     </div>
-                </dvi>
+                </div>
                 <div class="row">
 
                     <div class="col-12">
