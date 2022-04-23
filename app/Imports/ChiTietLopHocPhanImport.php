@@ -13,8 +13,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 
-class ChiTietLopHocPhanImport implements ToModel, WithHeadingRow
+class ChiTietLopHocPhanImport implements ToModel, SkipsEmptyRows, WithHeadingRow
 {
 
     public function model(array $row)
@@ -31,7 +32,7 @@ class ChiTietLopHocPhanImport implements ToModel, WithHeadingRow
         $lops = explode(',', $lops);
         // Lớp học phần
         $malhp = (isset($row['ma_lhp'])) ? $row['ma_lhp'] : '0';
-        $mahp = (isset($row['ma_hp'])) ? $row['ma_hp'] : '0';
+        $mahp = ($malhp == '0') ? '0' : substr($malhp, 3);
         $tenhp = (isset($row['ten_hp'])) ? $row['ten_hp'] : '';
         $loaihp = (isset($row['loai_hp'])) ? $row['loai_hp'] : '';
         $sotc = (isset($row['so_tc'])) ? $row['so_tc'] : '0';
@@ -50,7 +51,9 @@ class ChiTietLopHocPhanImport implements ToModel, WithHeadingRow
         if (count($khoa) == 0) {
             $khoanew = Khoa::create([
                 'tenkhoa' => $tenkhoa,
+                'makhoa'=> substr($malhp,3,2)
             ]);
+
             $makhoa = $khoanew->id;
         } else {
             $makhoa = $khoa[0]->id;
@@ -72,6 +75,7 @@ class ChiTietLopHocPhanImport implements ToModel, WithHeadingRow
             //Them lop cho sinh vien
             $sinhvienlop = SinhvienLop::where('masv', $masv)->where('malop', $lop)->get();
             if (count($sinhvienlop) == 0) {
+
                 SinhvienLop::create([
                     'masv' => $masv,
                     'malop' => $lop
@@ -91,7 +95,7 @@ class ChiTietLopHocPhanImport implements ToModel, WithHeadingRow
         if (count($lophocphan) == 0) {
             $lophocphannew = LopHocPhan::create([
                 'malhp' => $malhp,
-                'namhoc' => '20' . substr($malhp, 0, 2),
+                'namhoc' => '20' . substr($malhp, 0, 2). '-20'.strval(intval(substr($malhp, 0, 2)) + 1),
                 'hocky' => substr($malhp, 2, 1),
             ]);
             $malhpnew = $lophocphannew->malhp;

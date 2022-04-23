@@ -9,10 +9,11 @@ use App\Lop;
 use App\LopHocPhan;
 use App\SinhVien;
 use App\SinhvienLop;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class SinhVienImport implements ToModel, WithHeadingRow
+class SinhVienImport implements ToModel, SkipsEmptyRows, WithHeadingRow
 {
     /**
      * /**

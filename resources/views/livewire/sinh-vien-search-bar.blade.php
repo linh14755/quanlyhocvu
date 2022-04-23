@@ -16,10 +16,9 @@
                     <li class="list-group-item">
                         <a class="text-black"
                            href="{{route('sinhvien.edit',['id'=>$sinhvien['masv']])}}">{{$sinhvien['masv'].' - '.$sinhvien['tensv']}}
-                            <i class="fas fa-edit text-warning mr-2" aria-hidden="true"></i></a>
-
-                        <a href="{{route('chitietlophocphan.theosinhvien',['masv'=>$sinhvien['masv']])}}">Kết quả đăng ký HP <i
-                                class="fa fa-link text-danger" aria-hidden="true"></i></a>
+                          </a>
+-
+                        <a href="{{route('chitietlophocphan.theosinhvien',['masv'=>$sinhvien['masv']])}}"><img style="width: 22px" src="{{url('/storage/diem/detail.png')}}"></a>
 
                     </li>
                 @endforeach

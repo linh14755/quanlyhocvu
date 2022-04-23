@@ -16,10 +16,7 @@ class GiaoVienController extends Controller
     public function index()
     {
         $giaovien = GiaoVien::all();
-        return response()->json([
-            'code' => 200,
-            'data' => $giaovien
-        ], 200);
+        return response()->json($giaovien, 200);
     }
 
     /**

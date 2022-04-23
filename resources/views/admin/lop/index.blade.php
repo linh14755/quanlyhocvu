@@ -50,33 +50,32 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
+                                        <th>STT</th>
+                                        <th>Khoa</th>
                                         <th>Lớp</th>
-                                        <th>Thuộc Khoa</th>
                                         <th>GVCN</th>
                                         <th>Sĩ số</th>
                                         <th>Niên khóa</th>
-                                        <th>Danh sách sinh viên</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i = 0 ?>
                                     @foreach($lops as $lop)
                                         <tr>
-                                            <td>{{$lop->malop}}</td>
+                                            <td><?php $i = $i + 1; echo $i ?></td>
                                             <td>{{optional($lop->khoa)->tenkhoa}}</td>
+                                            <td><a class=""
+                                                   href="{{route('sinhvien.theolop',['malop'=>$lop->malop])}}">{{$lop->malop}}
+                                                    </a></td>
                                             <td>
                                                 @if($lop->magvcn !=0)
                                                     <a href="{{route('giaovien.edit',['id'=>$lop->magvcn])}}">{{optional($lop->giaovien)->tengv}}
-                                                        <i
-                                                            class="fas fa-edit text-warning mr-2"
-                                                            aria-hidden="true"></i></a>
+                                                        </a>
                                                 @endif
                                             </td>
                                             <td>{{$lop->siso}}</td>
                                             <td>{{$lop->nienkhoa}}</td>
-                                            <td><a class="text-dark" href="{{route('sinhvien.theolop',['malop'=>$lop->malop])}}">Danh sách
-                                                    sinh viên <i
-                                                        class="fa fa-link text-primary" aria-hidden="true"></i></a></td>
                                             <td>
                                                 <a href="{{route('lop.edit',['id'=>$lop->malop])}}"><i
                                                         class="fas fa-edit text-warning mr-2"

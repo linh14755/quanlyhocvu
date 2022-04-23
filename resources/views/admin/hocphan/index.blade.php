@@ -52,6 +52,7 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
+                                        <th>Danh sách SV ĐK</th>
                                         <th>Mã HP</th>
                                         <th>Tên HP</th>
                                         <th>Loại</th>
@@ -60,13 +61,17 @@
                                         <th>Số TCTH</th>
                                         <th>Đơn giá LT</th>
                                         <th>Đơn giá TH</th>
-                                        <th>Danh sách SV ĐK</th>
+
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+
                                     @foreach($hocphans as $hocphan)
+
                                         <tr>
+                                            <td> <a href="{{route('hocphan.theohocphan',['mahp'=>$hocphan->mahp])}}">Chi tiết <i
+                                                        class="fa fa-link text-danger" aria-hidden="true"></i></a></td>
                                             <td>{{$hocphan->mahp}}</td>
                                             <td>{{$hocphan->tenhp}}</td>
                                             <td>{{$hocphan->loai}}</td>
@@ -75,9 +80,7 @@
                                             <td>{{$hocphan->sotcth}}</td>
                                             <td>{{$hocphan->dongialt}}</td>
                                             <td>{{$hocphan->dongiath}}</td>
-                                            <td> <a href="{{route('hocphan.theohocphan',['mahp'=>$hocphan->mahp])}}">Chi tiết <i
-                                                        class="fa fa-link text-danger" aria-hidden="true"></i></a></td>
-                                            <td>
+
 
                                             <td>
 {{--                                                <a href="{{route('khoa.edit',['id'=>$khoa->id])}}"><i--}}

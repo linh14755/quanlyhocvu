@@ -7,6 +7,7 @@ use App\Lop;
 use App\PhuHuynh;
 use App\QuanheSvPh;
 use App\SinhVien;
+use App\SinhvienLop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -21,13 +22,15 @@ class AdminSinhVienController extends Controller
     private $lop;
     private $phuhuynh;
     private $quanhe_sv_ph;
+    private $sinhvien_lop;
 
-    public function __construct(SinhVien $sinhvien, Lop $lop, PhuHuynh $phuhuynh, QuanheSvPh $quanhe_sv_ph)
+    public function __construct(SinhVien $sinhvien, Lop $lop, PhuHuynh $phuhuynh, QuanheSvPh $quanhe_sv_ph, SinhvienLop $sinhvien_lop)
     {
         $this->sinhvien = $sinhvien;
         $this->lop = $lop;
         $this->phuhuynh = $phuhuynh;
         $this->quanhe_sv_ph = $quanhe_sv_ph;
+        $this->sinhvien_lop = $sinhvien_lop;
     }
 
     public function index()
@@ -46,18 +49,28 @@ class AdminSinhVienController extends Controller
 
     public function store(Request $request)
     {
+
         try {
             DB::beginTransaction();
             $this->sinhvien->create([
                 'masv' => $request->masv,
                 'tensv' => $request->tensv,
                 'ngaysinh' => $request->ngaysinh,
-                'malop' => $request->malop,
                 'maph1' => $request->maph1,
                 'maph2' => $request->maph2,
                 'quanheph1' => $request->quanheph1,
                 'quanheph2' => $request->quanheph2,
             ]);
+            foreach ($request->malop as $malopitem) {
+                $flag = DB::select("select * from sinhvien_lops where masv = $request->masv and malop = '" . $malopitem . "' ");
+                if (empty($flag)) {
+                    $this->sinhvien_lop->create([
+                        'masv' => $request->masv,
+                        'malop' => $malopitem,
+                    ]);
+                }
+            }
+
             DB::commit();
             return redirect()->route('sinhvien.index');
         } catch (\Exception $exception) {
@@ -72,7 +85,8 @@ class AdminSinhVienController extends Controller
         $lops = $this->lop->all();
         $phuhuynhs = $this->phuhuynh->all();
         $quanhe_sv_phs = $this->quanhe_sv_ph->all();
-        return view('admin.sinhvien.edit', compact('sinhvien', 'lops', 'phuhuynhs', 'quanhe_sv_phs'));
+        $sinhvien_lop = $this->sinhvien_lop->where('masv', $id)->get();
+        return view('admin.sinhvien.edit', compact('sinhvien', 'lops', 'phuhuynhs', 'quanhe_sv_phs', 'sinhvien_lop'));
     }
 
     public function update(Request $request, $id)
@@ -83,7 +97,7 @@ class AdminSinhVienController extends Controller
 //                'masv'=>$request->masv,
                 'tensv' => $request->tensv,
                 'ngaysinh' => $request->ngaysinh,
-                'malop' => $request->malop,
+//                'malop' => $request->malop,
                 'maph1' => $request->maph1,
                 'maph2' => $request->maph2,
                 'quanheph1' => $request->quanheph1,

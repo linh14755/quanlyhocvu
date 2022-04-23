@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\GiaoVien;
+use App\Imports\ChiTietLopHocPhanImport;
+use App\Imports\GiaoVienImport;
 use App\Khoa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Traits\DeleteModelTrait;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminGiaoVienController extends Controller
 {
@@ -85,5 +88,24 @@ class AdminGiaoVienController extends Controller
     public function delete($id)
     {
         return $this->deleteModelTrait('id', $id, $this->giaovien);
+    }
+    public function importForm()
+    {
+        return view('admin.giaovien.import');
+    }
+
+    public function import(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            Excel::import(new GiaoVienImport(), $request->file);
+            DB::commit();
+
+            return redirect()->back()->with('message', 'Import Successfully !!');
+        } catch (\Exception $exception) {
+            Log::error('Message: ' . $exception->getMessage() . ' ------Line ' . $exception->getLine());
+            DB::rollBack();
+            return redirect()->back()->with('message', 'Message: ' . $exception->getMessage());
+        }
     }
 }

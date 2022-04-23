@@ -31,10 +31,7 @@ class LopController extends Controller
 //            ], 200);
 //        }
         $Lop = Lop::all();
-        return response()->json([
-            'code' => 200,
-            'data' => $Lop
-        ], 200);
+        return response()->json($Lop, 200);
     }
 
     public function show($id)

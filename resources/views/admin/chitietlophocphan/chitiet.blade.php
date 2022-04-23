@@ -27,6 +27,38 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Mã học phần</th>
+                                    <th scope="col">Tên học phần</th>
+                                    <th scope="col">Tín chỉ</th>
+                                    <th scope="col">Điểm tổng học phần</th>
+                                    <th scope="col">Điểm quy đổi</th>
+                                    <th scope="col">Kết quả</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{$chitietlhp->mahp}}</td>
+                                    <td>{{optional($chitietlhp->hocphan)->tenhp}}</td>
+                                    <td>{{optional($chitietlhp->hocphan)->stc}}</td>
+                                    <td>{{$chitietlhp->diemtk}}</td>
+                                    <td>{{$chitietlhp->diemquydoi}}</td>
+                                    <td>
+                                        @if($chitietlhp->diemquydoi !='')
+                                            {!!($chitietlhp->diemquydoi == 'F') ? "<img src='".url('/storage/diem/Rot.png')."' >" :"<img  src='".url('/storage/diem/Dau.png')."' >"!!}
+                                        @else
+                                            <img style="width: 22px" src="{{url('/storage/diem/question.png')}}">
+                                        @endif
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+
                             <form method="POST" action="">
                                 @csrf
                                 <div class="card-body">
@@ -65,6 +97,17 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
+                                                <label>Điểm tổng kết</label>
+                                                <input value="{{$chitietlhp->diemtk}}" name="diemtk" type="text"
+                                                       step="0.01" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Điểm tổng kết hệ 4</label>
+                                                <input value="{{$chitietlhp->diemtkhe4}}" name="diemtkhe4" type="text"
+                                                       step="0.01" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+
                                                 <label>Điểm QT</label>
                                                 <input value="{{$chitietlhp->diemqt}}" name="diemqt" type="number"
                                                        step="0.01" class="form-control">
@@ -94,11 +137,7 @@
                                                 <input value="{{$chitietlhp->phantraml2}}" name="phantraml2" type="text"
                                                        step="0.01" class="form-control">
                                             </div>
-                                            <div class="form-group">
-                                                <label>Điểm tổng kết</label>
-                                                <input value="{{$chitietlhp->diemtk}}" name="diemtk" type="text"
-                                                       step="0.01" class="form-control">
-                                            </div>
+
 
                                         </div>
                                     </div>

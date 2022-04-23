@@ -41,6 +41,10 @@
                                         <input name="diachi" type="text" class="form-control" placeholder="Nhập địa chỉ">
                                     </div>
                                     <div class="form-group">
+                                        <label>Email</label>
+                                        <input name="email" type="text" class="form-control" placeholder="Nhập email">
+                                    </div>
+                                    <div class="form-group">
                                         <label>Mật Khẩu</label>
                                         <input name="matkhau" type="password" class="form-control" placeholder="Nhập mật khẩu">
                                     </div>

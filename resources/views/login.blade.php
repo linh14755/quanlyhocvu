@@ -18,12 +18,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="javascript:void(0)"><b>Admin</b>LTE</a>
+        <a href="javascript:void(0)"><b>ADMIN</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+{{--            <p class="login-box-msg">Sign in to start your session</p>--}}
             <form action="" method="post">
                 @csrf
                 <div class="input-group mb-3">
@@ -53,7 +53,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>
                     <!-- /.col -->
                 </div>

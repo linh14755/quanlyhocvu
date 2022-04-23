@@ -21,6 +21,9 @@
             <div class="container-fluid">
                 <dvi class="row mb-3 pt-3">
                     <div class="col-4">
+                        <a href="{{route('giaovien.import-form')}}" type="button" class="btn btn-success"><i
+                                class="fa fa-table" aria-hidden="true"></i>
+                            Import - Danh sách giáo viên</a>
                         <a href="{{route('giaovien.create')}}" type="button" class="btn btn-success"><i
                                 class="fa fa-plus-square" aria-hidden="true"></i>
                             Add</a>
@@ -52,7 +55,7 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>STT</th>
                                         <th>Tên Giáo Viên</th>
                                         <th>Số điện thoại</th>
                                         <th>Email</th>
@@ -62,15 +65,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i = 0 ?>
                                     @foreach($giaoviens as $giaovien)
                                         <tr>
-                                            <td>{{$giaovien->id}}</td>
+                                            <td><?php $i = $i + 1; echo $i ?></td>
                                             <td>{{$giaovien->tengv}}</td>
                                             <td>{{$giaovien->sodt}}</td>
                                             <td>{{$giaovien->email}}</td>
                                             <td>
                                                 @if(!empty($giaovien->facebook))
-                                                    <a  href="{{$giaovien->facebook}}"><i class="fa fa-link text-primary" aria-hidden="true"></i></a>
+                                                    <a  href="{{$giaovien->facebook}}"><img style="width: 22px" src="{{url('/storage/diem/link.png')}}"></a>
                                                 @else
                                                     Chưa cập nhật...
                                                 @endif

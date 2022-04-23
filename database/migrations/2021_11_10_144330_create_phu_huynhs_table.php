@@ -19,6 +19,7 @@ class CreatePhuHuynhsTable extends Migration
             $table->string('sodt');
             $table->string('matkhau');
             $table->string('diachi');
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

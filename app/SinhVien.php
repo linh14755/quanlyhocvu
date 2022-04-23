@@ -10,12 +10,12 @@ class SinhVien extends Model
 
     public function phuhuynh1()
     {
-        return $this->belongsTo(PhuHuynh::class, 'maph1');
+        return $this->belongsTo(PhuHuynh::class, 'maph1','sodt');
     }
 
     public function phuhuynh2()
     {
-        return $this->belongsTo(PhuHuynh::class, 'maph2');
+        return $this->belongsTo(PhuHuynh::class, 'maph2','sodt');
     }
 
     public function lop()

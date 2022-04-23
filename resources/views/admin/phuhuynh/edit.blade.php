@@ -25,6 +25,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
+
                             <form method="POST" action="{{route('phuhuynh.update',['id'=>$phuhuynh->id])}}">
                                 @csrf
                                 <div class="card-body">
@@ -39,6 +40,10 @@
                                     <div class="form-group">
                                         <label>Địa chỉ</label>
                                         <input value="{{$phuhuynh->diachi}}" name="diachi" type="text" class="form-control" placeholder="Nhập địa chỉ">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input value="{{$phuhuynh->email}}" name="email" type="text" class="form-control" placeholder="Nhập email">
                                     </div>
                                     <div class="form-group">
                                         <label>Đặt lại mật Khẩu</label>

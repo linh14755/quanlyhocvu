@@ -52,20 +52,19 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>STT</th>
                                         <th>Tên Khoa</th>
-                                        <th>Lớp</th>
+
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i = 0 ?>
                                     @foreach($khoas as $khoa)
                                         <tr>
-                                            <td>{{$khoa->id}}</td>
-                                            <td>{{$khoa->tenkhoa}}</td>
-                                            <td> <a class="text-dark" href="{{route('lop.theokhoa',['makhoa'=>$khoa->id])}}">Danh sách lớp <i
-                                                        class="fa fa-link text-primary" aria-hidden="true"></i></a>
-                                            </td>
+                                            <td><?php $i = $i + 1; echo $i ?></td>
+                                            <td> <a class="" href="{{route('lop.theokhoa',['makhoa'=>$khoa->id])}}">{{$khoa->tenkhoa}}</a></td>
+
                                             <td>
                                                 <a href="{{route('khoa.edit',['id'=>$khoa->id])}}"><i
                                                         class="fas fa-edit text-warning mr-2"

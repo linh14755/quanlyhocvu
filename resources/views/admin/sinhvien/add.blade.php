@@ -57,7 +57,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Lớp</label>
-                                        <select name="malop" class="form-control select2">
+                                        <select name="malop[]" class="form-control select2">
+                                            <option value="0">Chọn lớp</option>
+                                            @foreach($lops as $lop)
+                                                <option value="{{$lop->malop}}">{{$lop->malop}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lớp Chuyên Ngành</label>
+                                        <select name="malop[]" class="form-control select2">
                                             <option value="0">Chọn lớp</option>
                                             @foreach($lops as $lop)
                                                 <option value="{{$lop->malop}}">{{$lop->malop}}</option>
@@ -72,7 +81,7 @@
                                                     <option value="0">Chọn phụ huynh 1</option>
                                                     @foreach($phuhuynhs as $phuhuynh)
                                                         <option
-                                                            value="{{$phuhuynh->id}}">{{$phuhuynh->tenph .' - '.$phuhuynh->sodt}}</option>
+                                                            value="{{$phuhuynh->sodt}}">{{$phuhuynh->tenph .' - '.$phuhuynh->sodt}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

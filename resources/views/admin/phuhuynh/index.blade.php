@@ -21,8 +21,9 @@
             <div class="container-fluid">
                 <dvi class="row mb-3 pt-3">
                     <div class="col-4">
-{{--                        <a type="button" class="btn btn-success"><i class="fa fa-table" aria-hidden="true"></i>--}}
-{{--                            Import</a>--}}
+                        <a href="{{route('phuhuynh.import-form')}}" type="button" class="btn btn-success"><i
+                                class="fa fa-table" aria-hidden="true"></i>
+                            Import - Danh sách phụ huynh</a>
                         <a href="{{route('phuhuynh.create')}}" type="button" class="btn btn-success"><i
                                 class="fa fa-plus-square" aria-hidden="true"></i>
                             Add</a>
@@ -34,7 +35,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header row">
-                                <h3 class="card-title col-4">Danh sách phụ huynh</h3>
+                                <h3 class="card-title col-4">Danh sách PH</h3>
 
                                 <div class="card-tools col-8">
                                     <div class="input-group input-group-sm">
@@ -54,7 +55,7 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
-                                        <th>Mã PH</th>
+                                        <th>STT</th>
                                         <th>Tên PH</th>
                                         <th>Số ĐT</th>
                                         <th>Địa chỉ</th>
@@ -62,9 +63,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php $i = 0 ?>
                                     @foreach($phuhuynhs as $phuhuynh)
                                         <tr>
-                                            <td>{{$phuhuynh->id}}</td>
+                                            <td><?php $i = $i + 1; echo $i ?></td>
                                             <td>{{$phuhuynh->tenph}}</td>
                                             <td>{{$phuhuynh->sodt}}</td>
                                             <td>{{$phuhuynh->diachi}}</td>

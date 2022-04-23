@@ -52,23 +52,36 @@
                                         <label>Ngày sinh (tháng/ngày/năm)</label>
                                         <input value="{{$sinhvien->ngaysinh}}" name="ngaysinh" type="date" class="form-control" placeholder="Nhập ngày sinh">
                                     </div>
+
                                     <div class="form-group">
                                         <label>Lớp</label>
-                                        <select name="malop" class="form-control select2">
+                                        <select name="malop[]" class="form-control select2">
                                             <option value="0">Chọn lớp</option>
                                             @foreach($lops as $lop)
-                                                <option {{($sinhvien->malop ==$lop->malop) ?'selected':''}} value="{{$lop->malop}}">{{$lop->malop}}</option>
+                                                <option {{($sinhvien_lop[0]->malop == $lop->malop) ?'selected':''}} value="{{$lop->malop}}">{{$lop->malop}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Lớp Chuyên Ngành</label>
+                                        <select name="malop[]" class="form-control select2">
+                                            <option value="0">Chọn lớp</option>
+                                            @foreach($lops as $lop)
+                                                <option {{($sinhvien_lop[1]->malop == $lop->malop) ?'selected':''}} value="{{$lop->malop}}">{{$lop->malop}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <dic class="row">
                                             <div class="col-8">
+
                                                 <label>Phụ huynh 1</label>
                                                 <select name="maph1" class="form-control select2">
                                                     <option value="0">Chọn phụ huynh 1</option>
+
                                                     @foreach($phuhuynhs as $phuhuynh)
-                                                        <option {{($sinhvien->maph1 == $phuhuynh->id) ?'selected':''}} value="{{$phuhuynh->id}}">{{$phuhuynh->tenph .' - '.$phuhuynh->sodt}}</option>
+
+                                                        <option {{($sinhvien->maph1 == $phuhuynh->sodt) ?'selected':''}} value="{{$phuhuynh->sodt}}">{{$phuhuynh->tenph .' - '.$phuhuynh->sodt}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -90,8 +103,8 @@
                                                 <select name="maph2" class="form-control select2">
                                                     <option value="0"> Chọn phụ huynh 2</option>
                                                     @foreach($phuhuynhs as $phuhuynh)
-                                                        <option {{($sinhvien->maph2 == $phuhuynh->id) ?'selected':''}}
-                                                                value="{{$phuhuynh->id}}">{{$phuhuynh->tenph .' - '.$phuhuynh->sodt}}</option>
+                                                        <option {{($sinhvien->maph2 == $phuhuynh->sodt) ?'selected':''}}
+                                                                value="{{$phuhuynh->sodt}}">{{$phuhuynh->tenph .' - '.$phuhuynh->sodt}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

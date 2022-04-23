@@ -26,6 +26,8 @@ class CreateChiTietLopHocPhansTable extends Migration
             $table->string('dieml2')->nullable();
             $table->string('phantraml2')->nullable();
             $table->string('diemtk')->nullable();
+            $table->string('diemtkhe4')->nullable();
+            $table->string('diemquydoi')->nullable();
             $table->timestamps();
         });
     }

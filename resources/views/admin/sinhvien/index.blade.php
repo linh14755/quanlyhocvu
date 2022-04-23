@@ -40,7 +40,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header row">
-                                <h3 class="card-title col-4">{{(isset($tenlop))? 'Các sinh viên thuộc: '. $tenlop.' - '.count($lsinhvien).' sinh viên' :'Danh sách sinh viên'}}</h3>
+                                <h3 class="card-title col-4">{{(isset($tenlop))? 'Các sv thuộc: '. $tenlop.' - '.count($lsinhvien).' sinh viên' :'Danh sách SV'}}</h3>
                                 <div class="card-tools col-8">
                                     @livewire('sinh-vien-search-bar')
                                 </div>
@@ -56,8 +56,8 @@
                                         <th>Họ Tên</th>
                                         <th>Ngày Sinh</th>
                                         <th>Lớp</th>
-                                        <th>Tên Phụ huynh</th>
-                                        <th>SĐT Phụ huynh</th>
+                                        <th>Tên PH</th>
+                                        <th>SĐT PH</th>
                                         <th>Kết quả DKHP</th>
                                         <th>Action</th>
                                     </tr>
@@ -74,26 +74,21 @@
                                             <td>
                                                 @foreach($sv->lop as $lop)
 
-                                                    <a class="text-dark"
-                                                       href="{{route('lop.edit',['id'=>$lop->malop])}}">{{$lop->malop}}
-                                                        <i class="fas fa-edit text-warning mr-2" aria-hidden="true"></i></a>
+                                                    <a href="{{route('lop.edit',['id'=>$lop->malop])}}">{{$lop->malop}}</a></br>
                                                 @endforeach
                                             </td>
                                             <td>
-                                                @if($sv->maph1 != 0)
+
+                                                @if($sv->maph1 != '')
                                                     <a href="{{route('phuhuynh.edit',['id'=>$sv->maph1])}}">{{optional($sv->phuhuynh1)->tenph}}
-                                                        <i
-                                                            class="fas fa-edit text-warning mr-2"
-                                                            aria-hidden="true"></i></a>
+                                                       </a>
 
                                                 @endif
                                             </td>
                                             <td>{{optional($sv->phuhuynh1)->sodt}}</td>
                                             <td>
                                                 <a class="text-dark"
-                                                   href="{{route('chitietlophocphan.theosinhvien',['masv'=>$sv->masv])}}">Chi
-                                                    tiết <i
-                                                        class="fa fa-link text-primary" aria-hidden="true"></i></a>
+                                                   href="{{route('chitietlophocphan.theosinhvien',['masv'=>$sv->masv])}}"><img style="width: 22px" src="{{url('/storage/diem/detail.png')}}" ></a>
                                             </td>
                                             <td>
                                                 <a href="{{route('sinhvien.edit',['id'=>$sv->masv])}}"><i

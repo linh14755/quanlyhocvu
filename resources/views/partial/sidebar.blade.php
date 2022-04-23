@@ -28,7 +28,7 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="{{route('khoa.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+{{--                        <i class="nav-icon fas fa-user"></i>--}}
                         <p>
                             Khoa
                         </p>
@@ -36,7 +36,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('lop.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+{{--                        <i class="nav-icon fas fa-user"></i>--}}
                         <p>
                             Lớp
                         </p>
@@ -44,7 +44,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('giaovien.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+{{--                        <i class="nav-icon fas fa-user"></i>--}}
                         <p>
                             Giáo viên
                         </p>
@@ -53,45 +53,69 @@
 
                 <li class="nav-item">
                     <a href="{{route('phuhuynh.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+{{--                        <i class="nav-icon fas fa-user"></i>--}}
                         <p>
                             Phụ huynh
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{route('sinhvien.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Sinh viên
-                        </p>
-                    </a>
-                </li>
+                {{--                <li class="nav-item">--}}
+                {{--                    <a href="{{route('sinhvien.index')}}" class="nav-link">--}}
+                {{--                        <i class="nav-icon fas fa-user"></i>--}}
+                {{--                        <p>--}}
+                {{--                            Sinh viên--}}
+                {{--                        </p>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
                 <li class="nav-item">
                     <a href="{{route('lophocphan.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+{{--                        <i class="nav-icon fas fa-user"></i>--}}
                         <p>
                             Lớp học phần
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('hocphan.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                    <a href="{{route('diemrenluyen.index')}}" class="nav-link">
+{{--                        <i class="nav-icon fas fa-user"></i>--}}
                         <p>
-                            Học phần
+                            Điểm rèn luyện
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('chitietlophocphan.index')}}" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
+                    <a href="{{route('thoikhoabieu.index')}}" class="nav-link">
+{{--                        <i class="nav-icon fas fa-user"></i>--}}
                         <p>
-                            Chi tiết lớp học phần
+                            Thời khóa biểu
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('diemdanh.index')}}" class="nav-link">
+{{--                        <i class="nav-icon fas fa-user"></i>--}}
+                        <p>
+                            Điểm danh
+                        </p>
+                    </a>
+                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('hocphi.index')}}" class="nav-link">
+{{--                                        <i class="nav-icon fas fa-user"></i>--}}
+                                        <p>
+                                            Học phí
+                                        </p>
+                                    </a>
+                                </li>
+                {{--                <li class="nav-item">--}}
+                {{--                    <a href="{{route('chitietlophocphan.index')}}" class="nav-link">--}}
+                {{--                        <i class="nav-icon fas fa-user"></i>--}}
+                {{--                        <p>--}}
+                {{--                            Chi tiết lớp học phần--}}
+                {{--                        </p>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
 
             </ul>
         </nav>

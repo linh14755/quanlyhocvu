@@ -121,6 +121,15 @@ Route::prefix('admin')->group(function () {
             'uses' => 'AdminGiaoVienController@delete',
         ]);
 
+        Route::get('/import-form', [
+            'as' => 'giaovien.import-form',
+            'uses' => 'AdminGiaoVienController@importForm',
+        ]);
+        Route::post('/import', [
+            'as' => 'giaovien.import',
+            'uses' => 'AdminGiaoVienController@import',
+        ]);
+
     });
 
     //Phu huynh
@@ -152,6 +161,16 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [
             'as' => 'phuhuynh.delete',
             'uses' => 'AdminPhuHuynhController@delete',
+        ]);
+
+        Route::get('/import-form', [
+            'as' => 'phuhuynh.import-form',
+            'uses' => 'AdminPhuHuynhController@importForm',
+        ]);
+
+        Route::post('/import', [
+            'as' => 'phuhuynh.import',
+            'uses' => 'AdminPhuHuynhController@import',
         ]);
     });
 
@@ -215,6 +234,10 @@ Route::prefix('admin')->group(function () {
             'as' => 'lophocphan.theolhp',
             'uses' => 'AdminLopHocPhanController@theolhp',
         ]);
+        Route::post('/chitiet', [
+            'as' => 'lophocphan.chitiet',
+            'uses' => 'AdminLopHocPhanController@chitiet',
+        ]);
     });
 
     //Hoc phan
@@ -227,6 +250,20 @@ Route::prefix('admin')->group(function () {
             'as' => 'hocphan.theohocphan',
             'uses' => 'AdminHocPhanController@theohocphan',
         ]);
+
+        Route::get('/bangdiem/import-form', [
+            'as' => 'hocphan.bangdiem-import-form',
+            'uses' => 'AdminHocPhanController@bangDiemImportForm',
+        ]);
+        Route::post('/bangdiem/import', [
+            'as' => 'hocphan.bangdiem-import',
+            'uses' => 'AdminHocPhanController@bangDiemImport',
+        ]);
+
+        Route::get('/get-lop-from-khoa', [
+            'as' => 'hocphan.get-lop-va-hoc-phan-from-khoa',
+            'uses' => 'AdminHocPhanController@getLopVaHocPhanFromKhoa',
+        ]);
     });
 
     //Chi tiet lop hoc phan
@@ -235,7 +272,7 @@ Route::prefix('admin')->group(function () {
             'as' => 'chitietlophocphan.index',
             'uses' => 'AdminChiTietLopHocPhanController@index',
         ]);
-        Route::get('/chitiet/{masv}', [
+        Route::get('/chitiet/{masv}/{malhp}', [
             'as' => 'chitietlophocphan.chitiet',
             'uses' => 'AdminChiTietLopHocPhanController@chitiet',
         ]);
@@ -251,6 +288,103 @@ Route::prefix('admin')->group(function () {
             'as' => 'chitietlophocphan.theosinhvien',
             'uses' => 'AdminChiTietLopHocPhanController@theosinhvien',
         ]);
+    });
+
+    //diem ren luyen
+    Route::prefix('diemrenluyen')->group(function () {
+        Route::get('/', [
+            'as' => 'diemrenluyen.index',
+            'uses' => 'AdminDiemRenLuyenController@index',
+        ]);
+
+        Route::get('/import-form', [
+            'as' => 'diemrenluyen.import-form',
+            'uses' => 'AdminDiemRenLuyenController@importForm',
+        ]);
+        Route::post('/import', [
+            'as' => 'diemrenluyen.import',
+            'uses' => 'AdminDiemRenLuyenController@import',
+        ]);
+
+        Route::post('/chitiet', [
+            'as' => 'diemrenluyen.chitiet',
+            'uses' => 'AdminDiemRenLuyenController@chitiet',
+        ]);
+        Route::get('/chonkhoa', [
+            'as' => 'diemrenluyen.chonkhoa',
+            'uses' => 'AdminDiemRenLuyenController@chonkhoa',
+        ]);
+
+    });
+    //thoikhoabieu
+    Route::prefix('thoikhoabieu')->group(function () {
+        Route::get('/', [
+            'as' => 'thoikhoabieu.index',
+            'uses' => 'AdminThoiKhoaBieuController@index',
+        ]);
+
+        Route::get('/import-form', [
+            'as' => 'thoikhoabieu.import-form',
+            'uses' => 'AdminThoiKhoaBieuController@importForm',
+        ]);
+
+        Route::post('/import', [
+            'as' => 'thoikhoabieu.import',
+            'uses' => 'AdminThoiKhoaBieuController@import',
+        ]);
+
+        Route::get('/getweek', [
+            'as' => 'thoikhoabieu.getweek',
+            'uses' => 'AdminThoiKhoaBieuController@getWeek',
+        ]);
+
+    });
+
+    //diemdanh
+    Route::prefix('diemdanh')->group(function () {
+        Route::get('/', [
+            'as' => 'diemdanh.index',
+            'uses' => 'AdminDiemDanhController@index',
+        ]);
+        Route::get('/get-subject', [
+            'as' => 'diemdanh.getsubject',
+            'uses' => 'AdminDiemDanhController@getsubject',
+        ]);
+
+        Route::get('/import-form', [
+            'as' => 'diemdanh.import-form',
+            'uses' => 'AdminDiemDanhController@importForm',
+        ]);
+
+        Route::post('/import', [
+            'as' => 'diemdanh.import',
+            'uses' => 'AdminDiemDanhController@import',
+        ]);
+        Route::get('/timkhoa', [
+            'as' => 'diemdanh.timkhoa',
+            'uses' => 'AdminDiemDanhController@timkhoa',
+        ]);
+        Route::post('/timtheolop', [
+            'as' => 'diemdanh.timtheolop',
+            'uses' => 'AdminDiemDanhController@timtheolop',
+        ]);
+        Route::get('/chitiet_theosv', [
+            'as' => 'diemdanh.chitiet_theosv',
+            'uses' => 'AdminDiemDanhController@chitiet_theosv',
+        ]);
+        Route::get('/chitiet_diemdanh_theosv', [
+            'as' => 'diemdanh.chitiet_diemdanh_theosv',
+            'uses' => 'AdminDiemDanhController@chitiet_diemdanh_theosv',
+        ]);
+    });
+
+    //hocphi
+    Route::prefix('hocphi')->group(function () {
+        Route::get('/', [
+            'as' => 'hocphi.index',
+            'uses' => 'AdminHocPhiController@index',
+        ]);
+
     });
 });
 

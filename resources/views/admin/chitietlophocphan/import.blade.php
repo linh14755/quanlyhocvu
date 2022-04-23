@@ -25,12 +25,14 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form method="POST" action="{{route('chitietlophocphan.import')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('chitietlophocphan.import')}}"
+                                  enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Import file excel</label>
-                                        <input name="file" type="file" class="form-control-file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                                        <input name="file" type="file" class="form-control-file"
+                                               accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
@@ -42,11 +44,11 @@
                         </div>
                         @if (\Session::has('message'))
                             <div class="alert alert-info alert-block" role="alert">
-                               {!! \Session::get('message') !!}</ul>
+                                {!! \Session::get('message') !!}</ul>
                             </div>
 
                     @endif
-                        <!-- /.card -->
+                    <!-- /.card -->
                     </div>
 
                 </div>
